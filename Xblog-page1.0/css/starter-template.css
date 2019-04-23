@@ -353,10 +353,10 @@ img{
  	padding:0px;
  	margin:0px;
 }
-.py:before{
+/*.py:before{
 	position: absolute;
 	z-index: 1;
-	/*left: 100px;*/
+	left: 100px;
 	bottom: 0px;
 	display: inline-block;
 	height: 3px;
@@ -371,7 +371,7 @@ img{
 .py:hover:before{
 transform: scale3d(1, 1, 1);
 color: #ed6d00;
-}
+}*/
 
 footer a {
     font-family: Exo,sans-serif;
@@ -384,7 +384,7 @@ footer a:hover{color: #F5F5F5; text-decoration:none; }
 	line-height: 12px;
 	position: relative;
 	height: 12px;
-	padding: 1px 5px 1px 5px;
+	padding: 0px 5px 1px 5px;
 	cursor: pointer;
 	white-space: nowrap;
 	text-decoration: none;
@@ -405,3 +405,7 @@ footer a:hover{color: #F5F5F5; text-decoration:none; }
 	background-color: #ddd;
 	font-weight: lighter;
 	}
+/*博文显示页面*/
+.pageheader{
+	padding-top: 500px;
+}
