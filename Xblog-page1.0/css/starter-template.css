@@ -80,10 +80,15 @@ html,
 	 margin-top: 30rem;
 	}
 	
-	.container{
+	.navigation{
 		margin-top:-300px;
 		}
 		
+	.homepage{
+		margin-top:-300px;
+	}
+	
+	
 	.post img{
 		width: 100%;
 		/*border-top: 12px solid white;
@@ -177,6 +182,13 @@ html,
 	.next-page>a:hover{
 		color:rgba(59,59,59);
 	}
+	
+	
+	/*文章页面*/
+	.pageheader{
+		padding-top: 40%;
+	}
+
 	
 }
 
@@ -406,6 +418,6 @@ footer a:hover{color: #F5F5F5; text-decoration:none; }
 	font-weight: lighter;
 	}
 /*博文显示页面*/
-.pageheader{
+/*.pageheader{
 	padding-top: 500px;
-}
+}*/
