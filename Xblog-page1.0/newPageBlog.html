@@ -20,11 +20,16 @@
     
     <link href="assets/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" />
     
+    <!--<link href="https://cdn.bootcss.com/social-share.js/1.0.16/css/share.min.css" rel="stylesheet">-->
+    <link href="css/share.min.css" rel="stylesheet">
+    
     <!--<link href="css/flyPanels.css" rel="stylesheet"/>-->
 
 		<link href="css/style.css" rel="stylesheet">
 		 <!--<style type="text/css">
     </style>-->
+    <link rel="stylesheet" href="css/material-design-icons_2.2.3_iconfont_material-icons.css">
+    <link rel="stylesheet" href="css/py_comments.css">
 
   </head>
 
@@ -32,7 +37,6 @@
 		
 		<div id="luxy" style="">
 					<!--导航头 start-->
-					
 					
 					<div class="blog-mask luxy-el" data-speed-y="10" style="height: 85vh;width: 100%;background: url(img/xf-5.JPG);background-size: cover;background-position: 50%;">	
 						<nav style="padding-top: 50px;">
@@ -75,25 +79,74 @@
 				<!--文章主体 start-->
 			    <div class="container " style="border: 1px solid white;top:-50px;position: relative;width: 95%;background: white;border-radius: 6px;box-shadow: 0 16px 24px 2px rgba(0,0,0,.14), 0 6px 30px 5px rgba(0,0,0,.12), 0 8px 10px -5px rgba(0,0,0,.2);" >
 			      	
-		        <div class="row" style="z-index: 100;">
+		        <section class="row" style="z-index: 100;">
 	  					<!--博文内容start -->
-	  					<div class="main_content col-md-12" style="height: 1000px;">
-	  						<p>你是那傻逼！却扮的酷酷地</p> 
+	  					<div class="main_content col-md-12" style="height: 1000px; padding: 70px 20% .8rem;">
+	  						<div style="border-bottom: 1px dashed #e5e5e5;height: 100%;">
+	  							<p >你是那傻逼！却扮的酷酷地</p> 
+	  							
+	  							<div class="social-share" data-initialized="true" style="position: absolute;bottom: 0;left: 50%;transform: translate(-50%, -50%);">
+		  							<a href="#" class="social-share-icon icon-weibo" title="分享到新浪微博"></a>
+	    							<a href="#" class="social-share-icon icon-qq" title="分享给QQ好友"></a>
+	    							<a href="#" class="social-share-icon icon-wechat" title="分享到微信"></a>
+	    							<a href="#" class="social-share-icon icon-facebook" title="分享到facebook"></a>
+	    							<a href="#" class="social-share-icon icon-twitter" title="分享到推特"></a>
+	    							<a href="#" class="social-share-icon icon-google" title="分享到google+"></a>
+		  						</div>
+	  						</div>
 	  					</div>
 	  					<!--博文内容end -->
 	  						
-	  					<!--博文link推荐start-->
-	  					<div class="post-page col-md-12">
+	  					<!--博文作者介绍start-->
+	  					<div class="post-page col-md-12" style="padding: 1px 20% .8rem;margin: 30px 0 30px;">
+	  						<div class="col-md-3">
+									<div style="border-radius: 50%;overflow: hidden;width: 100px;max-width: 130px;max-height: 130px;float:right;box-shadow: 0 16px 38px -12px rgba(0,0,0,.56), 0 4px 25px 0 rgba(0,0,0,.12), 0 8px 10px -5px rgba(0,0,0,.2);">
+										<img style="width: 100%;height: auto;" src="img/tx.jpg" />
+									</div>
+	  						</div>
+	  						<div class="col-md-9">
+	  							<h3>E先生</h3>
+	  							<P style="color: #999;font-size: 1.5rem;">这里是我的个人自我介绍，和一些信息本博客内除个别说明以外，所有内容的版权均归本人所有，请勿擅自挪用。</P>
+	  						</div>
+	  						
 	  					</div>
-	  					<!--博文link推end-->
-	  					
-		        </div>
+	  					<!--博博文作者介绍end-->
+	  					<div class="col-md-12" style="text-align: center;">
+	  						<!--<a href="#" style="text-decoration: none;margin: 0 2rem;">
+	  							<span>
+	  								<i class="fa fa-weibo fa-4x" aria-hidden="true"></i>
+	  							</span>
+	  						</a>
+	  						<a href="#" style="text-decoration: none;margin: 0 2rem;">
+	  							<span>
+	  								<i class="fa fa-github fa-4x" aria-hidden="true"></i>
+	  							</span>
+	  						</a>
+	  						<a href="#" style="text-decoration: none;margin: 0 2rem;">
+	  							<span>
+	  								<i class="fa fa-facebook-official fa-4x" aria-hidden="true"></i>
+	  							</span>
+	  						</a>
+	  						<a href="#" style="text-decoration: none;margin: 0 2rem;">
+	  							<span>
+	  								<i class="fa fa-github fa-4x" aria-hidden="true"></i>
+	  							</span>
+	  						</a>-->
+	  						
+	  					</div>
+		        </section>
+		        
+		        <section id="comments" class="comments-area">
+							<div class="wp" style="margin-bottom: 45px;">
+								<div class="comments-container"></div>
+							</div>
+					  </section>
 			        
 			    </div>
 				<!--页面主体 end-->
 		
 		      <!--尾 -->
-					<footer class="blogEnd" style="width: 100%;">
+					<footer class="pagefooter" style="width: 100%;background-repeat: no-repeat;background-size:cover;text-align: center;padding: 1.5rem;border-top: #ebf2f6 1px solid;margin-top: 5rem;font-weight: lighter;font-size: 1.3rem; background-color: #fff;">
 						<section class="copyright ">
 							<a href="#" class="py">E先生Blog</a>&nbsp; Copyright © 2019
 						</section>
@@ -129,6 +182,13 @@
     
     <script src="js/newColor.js"></script>
     
+    <script src="js/social-share.min.js"></script>
+    
+    <!--<script src="https://cdn.bootcss.com/social-share.js/1.0.16/js/social-share.min.js"></script>-->
+    
+    	<script type="text/javascript" src="js/pyComment.js"></script>
+			<script type="text/javascript" src="js/wp-emoji-release.min.js"></script>
+    
         
     <script type="text/javascript">
 			luxy.init({
@@ -143,6 +203,26 @@
         modetype : 1
     	});
     		
+    		
+    		
+    	var agoComment = [
+		                  {"id":1,"userName":"E先生","image_src":"img/2.png","userRank":"0","time":"20分钟前","sortID":0,"sortName":0,"blog_src":"#","content":"第一条评论"},
+
+		                  {"id":2,"userName":"隔壁老王","image_src":"img/头像.png","userRank":"1","time":"20分钟前","sortID":0,"sortName":0,"blog_src":"","content":"第二条评论"},
+
+		                  {"id":3,"userName":"隔壁老王","image_src":"img/头像.png","userRank":"1","time":"20分钟前","sortID":1,"sortName":"E先生","blog_src":"#","content":"第一条评论的回复"},
+
+		                  ];
+
+		$(".comments-container").pyComment({
+			"agoComment":agoComment,
+			"callback":function(comment){
+				console.info("填写内容返回值：");
+				console.info(comment);
+			}
+
+		});
+
 			
 	</script>
 		
