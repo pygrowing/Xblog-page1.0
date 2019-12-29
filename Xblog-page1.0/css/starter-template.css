@@ -354,7 +354,6 @@ img{
 	padding-top: 42.5rem;
 	text-align: center;
 	color: #F5F5F5;
- 	font-weight: lighter;
 }
 
 .copyright{
@@ -392,7 +391,8 @@ footer a {
 }
 footer a:hover{color: #F5F5F5; text-decoration:none; }
 
-.blogEnd .github-repo {
+.blogEnd .github-repo ,
+.pagefooter .github-repo{
 	line-height: 12px;
 	position: relative;
 	height: 12px;
@@ -412,7 +412,9 @@ footer a:hover{color: #F5F5F5; text-decoration:none; }
 	display: contents !important;
 }
 .blogEnd .github-repo:active,
-.blogEnd .github-repo:hover {
+.blogEnd .github-repo:hover ,
+.pagefooter .github-repo:active,
+.pagefooter .github-repo:hover{
 	color: #000000;
 	background-color: #ddd;
 	font-weight: lighter;
@@ -447,3 +449,10 @@ footer a:hover{color: #F5F5F5; text-decoration:none; }
 	background: rgba(255,255,255,.3);
 	text-decoration: none; 
 }
+
+.pagefooter a {
+    font-family: Exo,sans-serif;
+    color: #50585d;
+    text-decoration: none;
+}
+.pagefooter a:hover{color: #50585d; text-decoration:none; }

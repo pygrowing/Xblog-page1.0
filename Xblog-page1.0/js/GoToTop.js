@@ -95,27 +95,27 @@ window.onload = function () {
     };
     
     //右
-    var _right = new mSlider({
-        dom: ".layer-right",
-        direction: "right",
-        distance:"400px"
-    });
+//  var _right = new mSlider({
+//      dom: ".layer-right",
+//      direction: "right",
+//      distance:"400px"
+//  });
 
-    Q("btnRight").addEventListener(event, function (e) {
-//  	if($(".wrap").is(":hidden")){
-//				     _right.open();    //如果元素为隐藏,则将它显现
-//				}else{
-//				      _right.close();     //如果元素为显现,则将其隐藏
-//				}
-		var display =$('.mSlider-main').css('display');
-		if(display == 'none'){
-//		   alert("被你发现了，我是隐藏的啦！");
-		   _right.open();
-		}else{
-//			alert("这个时候应该执行隐藏");
-			 _right.close();
-		}
-            
-    })
+//  Q("btnRight").addEventListener(event, function (e) {
+////  	if($(".wrap").is(":hidden")){
+////				     _right.open();    //如果元素为隐藏,则将它显现
+////				}else{
+////				      _right.close();     //如果元素为显现,则将其隐藏
+////				}
+//		var display =$('.mSlider-main').css('display');
+//		if(display == 'none'){
+////		   alert("被你发现了，我是隐藏的啦！");
+//		   _right.open();
+//		}else{
+////			alert("这个时候应该执行隐藏");
+//			 _right.close();
+//		}
+//          
+//  })
         
 }

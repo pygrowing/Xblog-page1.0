@@ -1,0 +1,775 @@
+@charset "UTF-8";
+/*!
+Theme Name: Xblog
+Author: E先生
+Author URI: http://pygrow.com/
+Description:该主题，遵循扁平化风格，采用响应式网页设计，可自定义主题色，支持 AJAX 评论与列表无限加载等诸多特性。
+Version: 0.1.1000
+*/
+/*全局样式*/
+
+/*去掉输入蓝色边框*/
+button:focus,
+input:focus,
+textarea:focus {
+	outline: 0
+}
+
+button,
+input,
+textarea {
+	font: inherit;
+	font-size: 14px;
+	margin: 0;
+}
+
+ .comments-container,
+ .comments-list,
+ .comment-name{
+ 	margin: 0;
+ 	padding: 0;
+ 	-webkit-box-sizing: border-box;
+ 	-moz-box-sizing: border-box;
+ 	box-sizing: border-box;
+ }
+
+ .comment-name a {
+ 	color: #03658c;
+ 	text-decoration: none;
+ }
+
+
+
+/** ====================
+ * Lista de Comentarios
+ =======================*/
+.comments-container {
+	margin: 25px auto 15px;
+	width: 700px;
+}
+
+.comments-container h1 {
+	font-size: 36px;
+	color: #283035;
+	font-weight: 400;
+}
+
+.comments-container h1 a {
+	font-size: 18px;
+	font-weight: 700;
+}
+
+.comments-list {
+	margin-top: 30px;
+	position: relative;
+}
+/*Material Icons图标引入文件*/
+#submit .icon,
+.comment-form-toolbar .icon-smilies {
+	display: inline-block;
+	font-family: "Material Icons";
+	font-style: normal;
+	font-weight: 400;
+	line-height: 1;
+	text-transform: none;
+	letter-spacing: normal;
+	word-wrap: normal;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+	-webkit-font-feature-settings: "liga";
+	font-feature-settings: "liga"
+}
+
+.comments-title,
+.comment-reply-title,
+.comment-name{
+	line-height: 1.3
+}
+
+.comments-list li {
+	margin-bottom: 15px;
+	display: block;
+	position: relative;
+}
+
+.comments-list li:after {
+	content: '';
+	display: block;
+	clear: both;
+	height: 0;
+	width: 0;
+}
+
+.reply-list {
+	padding-left: 88px;
+	clear: both;
+	margin-top: 15px;
+}
+/**
+ * Avatar
+ ---------------------------*/
+.comments-list .comment-avatar {
+	width: 65px;
+	height: 65px;
+	position: relative;
+	z-index: 99;
+	float: left;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+	overflow: hidden;
+	border-radius:50%;
+	box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+.comments-list .comment-avatar img {
+	width: 100%;
+	height: 100%;
+}
+
+.reply-list .comment-avatar {
+	width: 50px;
+	height: 50px;
+}
+
+.comment-main-level:after {
+	content: '';
+	width: 0;
+	height: 0;
+	display: block;
+	clear: both;
+}
+/**
+ * Caja del Comentario
+ ---------------------------*/
+.comments-list .comment-box {
+	width: 615px;
+	float: right;
+	position: relative;
+	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+	-moz-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+	box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+	-webkit-border-radius: 4px 4px 4px 4px;
+	-moz-border-radius: 4px 4px 4px 4px;
+	border-radius: 4px 4px 4px 4px;
+	/*box-shadow: 0 2px 8px -12px rgba(0, 0, 0, 0.56), 0 2px 8px 0px rgba(0, 0, 0, 0.12), 0 4px 5px -5px rgba(0, 0, 0, 0.2);*/
+}
+#comment-hover:hover{
+	box-shadow: 0 2px 8px -12px rgba(0, 0, 0, 0.56), 0 2px 8px 0px rgba(0, 0, 0, 0.12), 0 4px 5px -5px rgba(0, 0, 0, 0.2);
+}
+
+.comments-list .comment-box:before, .comments-list .comment-box:after {
+	content: '';
+	height: 0;
+	width: 0;
+	position: absolute;
+	display: block;
+	border-width: 10px 12px 10px 0;
+	border-style: solid;
+	/*border-color: transparent #FCFCFC;*/
+	border-color: transparent #eee;
+	top: 8px;
+	left: -11px;
+}
+
+.comments-list .comment-box:before {
+	border-width: 11px 13px 11px 0;
+	/*border-color: transparent rgba(0,0,0,0.05);*/
+	left: -12px;
+}
+
+.reply-list .comment-box {
+	width: 545px;
+}
+.comment-box .comment-head {
+	/*background: #FCFCFC;*/
+	background: #eee;
+	padding: 10px 12px;
+	border-bottom: 1px solid #E5E5E5;
+	overflow: hidden;
+	-webkit-border-radius: 4px 4px 0 0;
+	-moz-border-radius: 4px 4px 0 0;
+	border-radius: 4px 4px 0 0;
+}
+
+.comment-box .comment-head i {
+	float: right;
+	margin-left: 14px;
+	position: relative;
+	top: 2px;
+	color: #A6A6A6;
+	cursor: pointer;
+	-webkit-transition: color 0.3s ease;
+	-o-transition: color 0.3s ease;
+	transition: color 0.3s ease;
+}
+
+.comment-box .comment-head i:hover {
+	color: #00BCD4;
+}
+
+.comment-box .comment-name {
+	color: #283035;
+	font-size: 14px;
+	font-weight: 700;
+	float: left;
+	margin-right: 5px;
+}
+
+.comment-box .comment-name a {
+	color: #03658c;
+}
+
+.comment-box .comment-head span {
+/*	float: left;*/
+	vertical-align: top;
+	color: #999;
+	font-size: 13px;
+	position: relative;
+	top: -1px;
+}
+
+.comment-box .comment-content {
+	/*background: #FFF;*/
+	background: #eee;
+	padding: 12px;
+	font-size: 15px;
+	color: #595959;
+	-webkit-border-radius: 0 0 4px 4px;
+	-moz-border-radius: 0 0 4px 4px;
+	border-radius: 0 0 4px 4px;
+}
+
+.comment-box .comment-name.by-author, .comment-box .comment-name.by-author a {color: #03658c;}
+.comment-box .comment-name.by-author:after {
+	content: '博主';
+	background: #3a3f51;
+	/*color: #a6a8b1;*/
+	color:white;
+	font-size: 12px;
+	padding: 3px 5px;
+	font-weight: 700;
+	margin-left: 10px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
+/** =====================
+ * Responsive
+ ========================*/
+@media only screen and (max-width: 766px) {
+	.comments-container {
+		width: 480px;
+	}
+
+	.comments-list .comment-box {
+		width: 390px;
+	}
+
+	.reply-list .comment-box {
+		width: 320px;
+	}
+}
+
+
+/*评论框的加载内容*/
+.comments-title {
+	margin: 1em 0;
+	font-size: 40px;
+	font-weight: 400;
+	color: #222;
+	text-align: center
+}
+
+.comment-head .icon{
+	width: 12px;
+    height: 12px;
+    margin: 1px 5px;
+    vertical-align: top;
+    fill: #656c7a;
+    float: left;
+}
+
+.comment-reply{
+	color:#656c7a !important;
+	/*font-weight: 200 !important;*/
+}
+
+.comment-reply:hover{ 
+color: #2a2e2e !important;
+}
+.by-nosrc a{
+	color: #2a2e2e !important;
+	pointer-events:none;
+}
+
+/*没有更多的评论,我是有底线的*/
+.noMore{
+	color: #969696;
+	display: block;
+	text-align: center;
+    margin-top: 40px;
+    text-decoration:none;
+    /*cursor: not-allowed;*/
+}
+#comments a{
+	text-decoration: none;
+}
+.noMore:hover{
+	color: #969696;
+}
+/*没有评论, 评论都没有,要不您来一条！*/
+.comment_img{
+	width: 226px;
+	height: 92px;
+	background: url(../images/icon_comment.png);
+	margin: 30px auto 20px;
+	background-size: contain;
+}
+.comment_text{
+	color: #969696;
+	display: block;
+	text-align: center;
+	font-size: 12px;
+}
+.comment_text:hover{
+	color: #969696;
+}
+/*评论框样式*/
+.wp {
+	margin-right: auto;
+	margin-left: auto;
+	clear: both
+}
+
+.wp {
+	width: 700px
+}
+
+/*表情框及头像框设置*/
+#commentform {
+	position: relative;
+	margin-left: 100px;
+	clear: both
+}
+
+#commentform :invalid {
+	outline: 0
+}
+
+#commentform .required {
+	position: absolute;
+	top: 13px;
+	right: 6px;
+	font-size: 22px;
+	line-height: 1em;
+	color: #F44336;
+	pointer-events: none
+}
+
+#commentform.guest-must-log-in {
+	margin-left: 0;
+	background: #FFF;
+	border-radius: 2px;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, .2)
+}
+
+#commentform.guest-must-log-in .author-info {
+	position: static;
+	float: left
+}
+
+#commentform.guest-must-log-in .comment-form-main {
+	overflow: hidden
+}
+
+#commentform.guest-must-log-in .must-log-in {
+	margin-bottom: 0;
+	line-height: 100px;
+	text-align: center
+}
+/*更多评论*/
+.loadmore {
+	display: block;
+	width: 150px;
+	margin: 0 auto 10px;
+	line-height: 44px;
+	color: #999;
+	text-align: center;
+	vertical-align: middle;
+	border: 2px solid #DDD;
+	border-radius: 24px;
+	-webkit-transition: .2s;
+	transition: .2s
+}
+/*.loadmore {
+		width: 120px;
+		margin-top: 2px;
+		margin-bottom: 2px;
+		line-height: 40px;
+		border-width: 1px
+	}*/
+.loadmore:hover {
+	color: #00BCD4;
+	border-color: #00BCD4
+}
+/*取消回复样式*/
+#cancel-comment-reply-link {
+	position: relative;
+	top: -5px;
+	float: right;
+	font-weight: 400;
+	color: #00BCD4;
+	text-decoration: none;
+	transition: color .2s
+}
+
+/*评论框*/
+.author-info {
+	position: absolute;
+	top: 0;
+	left: -100px;
+	z-index: 2;
+	width: 100px;
+	height: 100px;
+	overflow: hidden;
+	background: #F7F7F7;
+	border-radius: 2px 0 0 2px
+}
+
+.author-info .avatar {
+	width: 100%;
+	height: 100%
+}
+
+.author-info .logged-in-as {
+	position: absolute;
+	right: 0;
+	bottom: -30px;
+	left: 0;
+	padding: 2px;
+	margin: 0;
+	font-size: 12px;
+	color: #FFF;
+	text-align: center;
+	background: rgba(0, 0, 0, .6);
+	-webkit-transition: bottom .3s ease-out;
+	transition: bottom .3s ease-out
+}
+
+.author-info .logged-in-as a {
+	color: #FFF
+}
+
+.author-info:hover .logged-in-as {
+	bottom: 0
+}
+.comment-form-main {
+	position: relative;
+	margin-bottom: 10px;
+	box-sizing: content-box !important;
+}
+#commentform,
+.author-info,
+.comment-respond{
+	-webkit-box-sizing:content-box !important;
+	box-sizing: content-box !important;
+}
+
+.comment-textarea-wrapper {
+	padding-left: 100px;
+	margin-bottom: 10px;
+	margin-left: -100px;
+	background: #FFF;
+	border-radius: 2px;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, .2)
+}
+
+.comment-form-comment {
+	padding: 10px 10px 0;
+	margin: 0
+}
+
+.comment-form-comment label {
+	display: none
+}
+
+#comment {
+	width: 100%;
+	height: 69px;
+	padding: 0;
+	overflow: auto;
+	line-height: 1.5;
+	vertical-align: top;
+	resize: none;
+	border: 0
+}
+
+#comment::-webkit-scrollbar {
+	width: 5px
+}
+
+#comment::-webkit-scrollbar-thumb {
+	background: rgba(0, 0, 0, .2);
+	border-radius: 2px
+}
+
+#comment:disabled {
+	color: #999;
+	background: #FFF
+}
+
+.comment-form-toolbar {
+	position: relative;
+	height: 20px;
+	padding: 0px 7px 5px 7px
+}
+
+.comment-form-toolbar .icon-smilies {
+	position: relative;
+	top: -1px;
+	width: 1em;
+	height: 1em;
+	font-size: 21px;
+	color: #999;
+	cursor: pointer
+}
+
+.comment-form-toolbar .icon-smilies:before {
+	content: "\E24E"
+}
+
+.comment-smilies {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	z-index: 1;
+	display: none;
+	width: 160px;
+	padding: 5px;
+	background: #FFF;
+	border-radius: 2px;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, .2);
+	-webkit-transform-origin: 0 0;
+	-ms-transform-origin: 0 0;
+	transform-origin: 0 0;
+	-webkit-animation: commentSmiliesIn .3s;
+	animation: commentSmiliesIn .3s
+}
+
+.comment-smilies.out {
+	-webkit-animation-name: commentSmiliesOut;
+	animation-name: commentSmiliesOut;
+	-webkit-animation-fill-mode: forwards;
+	animation-fill-mode: forwards
+}
+
+.comment-smilies .emoji {
+	display: inline-block;
+	width: 1em;
+	margin: 3px;
+	font-size: 24px;
+	line-height: 1;
+	vertical-align: middle;
+	cursor: pointer
+}
+
+.comment-form-fields {
+	display: none;
+	float: left;
+	margin-bottom: 10px;
+	background: #FFF;
+	border-radius: 2px;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, .2)
+}
+
+.comment-form-fields p {
+	position: relative;
+	float: left;
+	margin-bottom: 0;
+	border-left: 1px solid #EEE
+}
+
+.comment-form-fields p:first-child {
+	border-left: 0
+}
+
+.comment-form-fields label {
+	position: absolute;
+	top: 0;
+	left: 5px;
+	display: none;
+	padding: 0 5px;
+	font-size: 14px;
+	line-height: 38px;
+	color: #999;
+	cursor: text;
+	-webkit-transition: .2s;
+	transition: .2s
+}
+
+.no-placeholder .comment-form-fields label {
+	display: block
+}
+
+.comment-form-fields .fill label {
+	display: none
+}
+
+.comment-form-fields input {
+	width: 150px;
+	height: 38px;
+	padding: 0 10px;
+	background: 0 0;
+	border: 0
+}
+
+.comment-form-fields.in {
+	-webkit-animation: fadeIn .3s;
+	animation: fadeIn .3s
+}
+.form-submit {
+	margin: 0
+}
+
+#submit {
+	position: absolute;
+	top: 71px;
+	right: 20px;
+	width: 56px;
+	height: 56px;
+	padding: 0;
+	overflow: hidden;
+	color: #FFF;
+	background: #00BCD4;
+	border: 0;
+	border-radius: 50%;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, .2);
+	-webkit-transition: .3s;
+	transition: .3s
+}
+
+#submit .icon {
+	margin-left: 3px;
+	font-size: 28px;
+	vertical-align: middle
+}
+
+#submit .icon:before {
+	content: "\E163"
+}
+
+#submit:hover {
+	box-shadow: 0 2px 6px rgba(0, 0, 0, .3), 0 4px 20px rgba(0, 0, 0, .2)
+}
+
+#submit:active {
+	background-color: #00CAE3
+}
+
+#submit:disabled {
+	cursor: wait;
+	cursor: not-allowed
+}
+
+#submit.submitting .icon {
+	-webkit-animation: submitting 2s ease-in-out infinite;
+	animation: submitting 2s ease-in-out infinite
+}
+
+#submit.submitted .icon {
+	-webkit-animation: submitted 2s ease-in-out;
+	animation: submitted 2s ease-in-out
+}
+
+@-webkit-keyframes submitting {
+	to {
+		-webkit-transform: rotateX(360deg);
+		transform: rotateX(360deg)
+	}
+}
+
+@keyframes submitting {
+	to {
+		-webkit-transform: rotateX(360deg);
+		transform: rotateX(360deg)
+	}
+}
+
+@-webkit-keyframes submitted {
+	49% {
+		opacity: 0;
+		-webkit-transform: translateX(56px);
+		transform: translateX(56px)
+	}
+	51% {
+		opacity: 0;
+		-webkit-transform: translateX(-56px);
+		transform: translateX(-56px)
+	}
+	to {
+		opacity: 1;
+		-webkit-transform: none;
+		transform: none
+	}
+}
+
+@keyframes submitted {
+	49% {
+		opacity: 0;
+		-webkit-transform: translateX(56px);
+		transform: translateX(56px)
+	}
+	51% {
+		opacity: 0;
+		-webkit-transform: translateX(-56px);
+		transform: translateX(-56px)
+	}
+	to {
+		opacity: 1;
+		-webkit-transform: none;
+		transform: none
+	}
+}
+
+.comment-form-extra {
+	margin-bottom: 10px;
+	clear: both
+}
+
+#comment_mail_notify {
+	margin: 0 4px 3px 0 !important;
+	vertical-align:middle; 
+	margin-right: .3em;
+}
+.labelText label{
+		vertical-align:middle; 
+	    font-weight: 500 !important;
+	    font-size: 12px;
+}
+
+.comment-list {
+	padding: 0;
+	margin: 0 0 0 100px;
+	list-style: none
+}
+
+.comment-list ol,
+.comment-list ul {
+	padding: 0;
+	margin: 0;
+	list-style: none
+}
+
+.comment-list #commentform {
+	margin-left: 40px
+}
+
+.comment-list .author-info {
+	left: -40px;
+	width: 40px;
+	height: 40px
+}

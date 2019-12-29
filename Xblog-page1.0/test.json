@@ -1,0 +1,8 @@
+[
+{"id":4,"userName":"E先生","image_src":"img/2.png","userRank":"0","time":"20分钟前","sortID":0,"sortName":0,"blog_src":"#","content":"追加评论1"},
+{"id":5,"userName":"花花","image_src":"img/foot.png","userRank":"1","time":"20分钟前","sortID":0,"sortName":0,"blog_src":"","content":"追加评论2"},
+{"id":6,"userName":"隔壁老王","image_src":"img/头像.png","userRank":"1","time":"20分钟前","sortID":0,"sortName":0,"blog_src":"#","content":"追加评论3"},
+{"id":7,"userName":"E先生","image_src":"img/2.png","userRank":"0","time":"20分钟前","sortID":0,"sortName":0,"blog_src":"#","content":"追加评论4"},
+{"id":8,"userName":"E先生","image_src":"img/2.png","userRank":"0","time":"20分钟前","sortID":7,"sortName":"E先生","blog_src":"#","content":"追加评论4的儿子"},
+{"id":9,"userName":"E先生","image_src":"img/2.png","userRank":"0","time":"20分钟前","sortID":8,"sortName":"E先生","blog_src":"#","content":"追加评论4的儿子的儿子"}
+]
