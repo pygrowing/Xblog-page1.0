@@ -40,7 +40,7 @@
 				boxHtml += '	<h2 class="comments-title">4条评论</h2>';
 				boxHtml += '	<div id="respond" class="comment-respond">';
 				boxHtml += '		<h3 id="reply-title" class="comment-reply-title"><small><a rel="nofollow" id="cancel-comment-reply-link" href="#" style="display: none;">取消回复</a></small></h3>';
-				boxHtml += '		<form id="commentform" class="comment-form"  target="nm_iframe">';
+				boxHtml += '		<form id="commentform" class="comment-form"  target="nm_iframe" onsubmit="return sub();">';
 				boxHtml += '			<div class="author-info guest"><img src="img/none.png" width="100" class="avatar" title="" style=""></div>';
 				boxHtml += '			<div class="comment-form-main">';
 				boxHtml += '				<div class="comment-textarea-wrapper">';
@@ -336,82 +336,89 @@ $(function () {
     });
     
     //评论提交
-    $('.submit').click(function (event) {
-//  	var a=('.comment-respond').prev().attr("selfID");
-//		$.ajax({  
-//				type:"GET",
-//             	url: "test.json",  
-//             	data: {"id","1"}, 
-//            	dataType: "json",  
-//             	success: function (req) {  
-//                 if () {  
-//                     $(".loadmore").hide();
-//                     var noText = '';
-//                     noText += '<a class="noMore">╰(￣▽￣)╮我是有底线的...</a>';
-//					   $(".comments-container").after(noText);
-//                 } else {  
-//                     $("#page").val(page + 1);//记录页码  
-//                  }  
-//                  insertDiv(data);  
-//              }  
-//          });
-		var userName = "测试";
-		var time ="刚刚";
-		var content ="哈哈哈哈";
-		var image_src ="img/2.png";
-		var id ="100";
-		var item = '';
-		
-		item += '<li id="comment'+id+'">';
-		item += '	<div class="comment-main-level"  id="div-comment-'+id+'" selfID="'+id+'">';
-		item += '		<div class="comment-avatar" ><img src="'+image_src+'" alt=""></div>';
-		item += '		<div class="comment-box" >';
-		item += '			<div class="comment-head">';
-		//判断链接是否为空
-		item += '				<h6 class="comment-name by-nosrc"><a href="javascript:return false;">'+userName+'</a></h6>';
-		
-		item += '               <span class="comment-item-bullet"> • </span>'
-		item += '				<span>'+time+'</span>';
-		item += '				<i class="material-icons md-15 reply" title = "回复" selfID="'+id+'" onclick="return addComment.moveForm( &quot;div-comment-'+id+'&quot;, &quot;'+id+'&quot;, &quot;respond&quot;, &quot;1020&quot; , &quot;'+userName+'&quot;)" >reply</i>';
-		item += '			</div>';
-		item += '			<div class="comment-content">'+content+'</div>';
-		item += '		</div>';
-		item += '	</div>';
-		item += '</li>';
-		alert("参数，sortID='"+$("#sortID").val()+"'   sortName='"+$("#sortName").val()+"'");
-		if($("#sortID").val() == 0){
-//			alert("为第一层楼主，sortID='"+$("#sortID").val()+"'   sortName='"+$("#sortName").val()+"'");
-			$("#comments-list").prepend(item);
-		}else{
-//			alert("为子楼层上级，sortID='"+$("#sortID").val()+"'   sortName='"+$("#sortName").val()+"'");
-			if(!($("#comment"+$("#sortID").val()).hasClass('comments'))){ //没有
-				var comments = '';
-				comments += '<ul class="comments-list reply-list comments'+$("#sortID").val()+'" >';
-				comments += 	item;
-				comments += '</ul>';
-				$("#comment"+$("#sortID").val()).append(comments);
-			}else{
-				$("#comment"+$("#sortID").val()).prepend(item);
-			}
-		}
-		//评论完成，回复栏复原
-		$("#sortID").val("0")
-		$("#sortName").val("0")
-		$("#comment").val("");
-		$("#author").val("");
-		$("#email").val("");
-		$("#url").val("");
-//		$(".comment-form-fields").css('display','none');
-		
-    	$("#cancel-comment-reply-link").click();
-//		window.location = "./a";
-    });
-    
-    
+//  $('.submit').click(function (event) {
+////  	var a=('.comment-respond').prev().attr("selfID");
+////		$.ajax({  
+////				type:"GET",
+////             	url: "test.json",  
+////             	data: {"id","1"}, 
+////            	dataType: "json",  
+////             	success: function (req) {  
+////                 if () {  
+////                     $(".loadmore").hide();
+////                     var noText = '';
+////                     noText += '<a class="noMore">╰(￣▽￣)╮我是有底线的...</a>';
+////					   $(".comments-container").after(noText);
+////                 } else {  
+////                     $("#page").val(page + 1);//记录页码  
+////                  }  
+////                  insertDiv(data);  
+////              }  
+////          });
+
+
      $("#comment").click(function(e) {
         $(".comment-form-fields").show(230);
     });
     
-//				    alert( $("#sortID").val());
-//				    alert( $("#sortName").val());
 });
+
+//评论提交
+function sub() {
+//	var author =$('#author').val();
+//	if(author =='' || author == null || author == undefined){
+//		$(".comment-form-fields").css('display','block');
+//	}
+	//针对于待生产的评论的父id
+	var sortID= $("#sortID").val();
+	var userName = "测试";
+	var time ="刚刚";
+	var content =$('#comment').val();
+	var image_src ="img/2.png";
+	var id ="100";
+	var item = '';	
+	
+	item += '<li id="comment'+id+'">';
+	item += '	<div class="comment-main-level"  id="div-comment-'+id+'" selfID="'+id+'">';
+	item += '		<div class="comment-avatar" ><img src="'+image_src+'" alt=""></div>';
+	item += '		<div class="comment-box" >';
+	item += '			<div class="comment-head">';
+	//判断链接是否为空
+	item += '				<h6 class="comment-name by-nosrc"><a href="javascript:return false;">'+userName+'</a></h6>';
+	
+	item += '               <span class="comment-item-bullet"> • </span>'
+	item += '				<span>'+time+'</span>';
+	item += '				<i class="material-icons md-15 reply" title = "回复" selfID="'+id+'" onclick="return addComment.moveForm( &quot;div-comment-'+id+'&quot;, &quot;'+id+'&quot;, &quot;respond&quot;, &quot;1020&quot; , &quot;'+userName+'&quot;)" >reply</i>';
+	item += '			</div>';
+	item += '			<div class="comment-content">'+content+'</div>';
+	item += '		</div>';
+	item += '	</div>';
+	item += '</li>';
+	alert("参数，sortID='"+sortID+"'   sortName='"+$("#sortName").val()+"'");
+	if($("#sortID").val() == 0){
+//			alert("为第一层楼主，sortID='"+$("#sortID").val()+"'   sortName='"+$("#sortName").val()+"'");
+		$("#comments-list").prepend(item);
+	}else{
+//			alert("为子楼层上级，sortID='"+$("#sortID").val()+"'   sortName='"+$("#sortName").val()+"'");
+		if(!($("#comment"+$("#sortID").val()).hasClass('comments'))){ //没有
+			var comments = '';
+			comments += '<ul class="comments-list reply-list comments'+$("#sortID").val()+'" >';
+			comments += 	item;
+			comments += '</ul>';
+			$("#comment"+$("#sortID").val()).append(comments);
+		}else{
+			$("#comment"+$("#sortID").val()).prepend(item);
+		}
+	}
+	//评论完成，回复栏复原
+	$("#sortID").val("0")
+	$("#sortName").val("0")
+	$("#comment").val("");
+	$("#author").val("");
+	$("#email").val("");
+	$("#url").val("");
+	$(".comment-form-fields").css('display','none');
+	
+	$("#cancel-comment-reply-link").click();
+	return false;
+}
