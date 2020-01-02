@@ -54,6 +54,7 @@
 				boxHtml += '					<p class="comment-form-author"><label for="author">昵称</label> <span class="required">*</span><input id="author" name="author" type="text" value="" size="30" aria-required="true" required="required" placeholder="昵称"></p>';
 				boxHtml += '					<p class="comment-form-email"><label for="email">邮箱</label> <span class="required">*</span><input id="email" name="email" type="email" value="" size="30" aria-describedby="email-notes" aria-required="true" required="required" placeholder="邮箱"></p>';
 				boxHtml += '					<p class="comment-form-url"><label for="url">网站</label> <input id="url" name="url" type="url" value="" size="30" placeholder="网站"></p>';
+				boxHtml += '					<p><input id="selfID" type="text" value="0" size="30"  style="display:none"></p>';
 				boxHtml += '					<p><input id="sortID" type="text" value="0" size="30"  style="display:none"></p>';
 				boxHtml += '					<p><input id="sortName" type="text" value="0" size="30"  style="display:none"></p>';
 				boxHtml += '				</div>';
@@ -123,7 +124,7 @@
 					}
 					item += '<span class="comment-item-bullet"> • </span>'
 					item += '				<span>'+v.time+'</span>';
-					item += '				<i class="material-icons md-15 reply" title = "回复" selfID="'+v.id+'" onclick="return addComment.moveForm( &quot;div-comment-'+v.id+'&quot;, &quot;'+v.id+'&quot;, &quot;respond&quot;, &quot;1020&quot;, &quot;'+v.userName+'&quot;)" >reply</i>';
+					item += '				<i class="material-icons md-15 reply" title = "回复" selfID="'+v.id+'" onclick="return addComment.moveForm( &quot;div-comment-'+v.id+'&quot;, &quot;'+v.id+'&quot;, &quot;respond&quot;, &quot;1020&quot;, &quot;'+v.userName+'&quot;,&quot;'+v.sortID+'&quot;)" >reply</i>';
 //					item += '				<i class="material-icons md-15" id="reply" title = "回复" selfID="'+v.id+'" >reply</i>';
 					item += '			</div>';
 					item += '			<div class="comment-content">'+v.content+'</div>';
@@ -236,7 +237,7 @@
 					}
 					item += '<span class="comment-item-bullet"> • </span>'
 					item += '				<span>'+data[i].time+'</span>';
-					item += '				<i class="material-icons md-15 reply" title = "回复" selfID="'+data[i].id+'" onclick="return addComment.moveForm( &quot;div-comment-'+data[i].id+'&quot;, &quot;'+data[i].id+'&quot;, &quot;respond&quot;, &quot;1020&quot; , &quot;'+data[i].userName+'&quot;)" >reply</i>';
+					item += '				<i class="material-icons md-15 reply" title = "回复" selfID="'+data[i].id+'" onclick="return addComment.moveForm( &quot;div-comment-'+data[i].id+'&quot;, &quot;'+data[i].id+'&quot;, &quot;respond&quot;, &quot;1020&quot; , &quot;'+data[i].userName+'&quot;,&quot;'+data[i].sortID+'&quot;)" >reply</i>';
 //					item += '				<i class="material-icons md-15" id="reply" title = "回复" selfID="'+data[i].id+'" >reply</i>';
 					item += '			</div>';
 					item += '			<div class="comment-content">'+data[i].content+'</div>';
@@ -271,8 +272,9 @@
 			
 			this.quitClickEvent = function(){
 				$("#cancel-comment-reply-link").click(function () {
-					$("#sortID").val("0")
-					$("#sortName").val("0")
+					$("#sortID").val("0");
+					$("#sortName").val("0");
+					$("#selfID").val("0");
 				});
 			};
 			
@@ -286,8 +288,9 @@
 })(jQuery);
 
 var addComment = {
-	moveForm: function(a, b, c, d,name) {
-		$("#sortID").val(b)
+	moveForm: function(a, b, c, d,name,sortID) {
+		$("#selfID").val(b)
+		$("#sortID").val(sortID)
 		$("#sortName").val(name)
 		var e, f, g, h, i = this,
 			j = i.I(a),
@@ -371,6 +374,7 @@ function sub() {
 //	}
 	//针对于待生产的评论的父id
 	var sortID= $("#sortID").val();
+	var selfID = $("#selfID").val();
 	var userName = "测试";
 	var time ="刚刚";
 	var content =$('#comment').val();
@@ -388,26 +392,26 @@ function sub() {
 	
 	item += '               <span class="comment-item-bullet"> • </span>'
 	item += '				<span>'+time+'</span>';
-	item += '				<i class="material-icons md-15 reply" title = "回复" selfID="'+id+'" onclick="return addComment.moveForm( &quot;div-comment-'+id+'&quot;, &quot;'+id+'&quot;, &quot;respond&quot;, &quot;1020&quot; , &quot;'+userName+'&quot;)" >reply</i>';
+	item += '				<i class="material-icons md-15 reply" title = "回复" selfID="'+id+'" onclick="return addComment.moveForm( &quot;div-comment-'+id+'&quot;, &quot;'+id+'&quot;, &quot;respond&quot;, &quot;1020&quot; , &quot;'+userName+'&quot;,&quot;'+sortID+'&quot;)" >reply</i>';
 	item += '			</div>';
 	item += '			<div class="comment-content">'+content+'</div>';
 	item += '		</div>';
 	item += '	</div>';
 	item += '</li>';
-	alert("参数，sortID='"+sortID+"'   sortName='"+$("#sortName").val()+"'");
-	if($("#sortID").val() == 0){
+	alert("参数，sortID='"+sortID+"'   sortName='"+$("#sortName").val()+"'    selfID= "+selfID);
+	if(sortID  == 0){
 //			alert("为第一层楼主，sortID='"+$("#sortID").val()+"'   sortName='"+$("#sortName").val()+"'");
 		$("#comments-list").prepend(item);
 	}else{
 //			alert("为子楼层上级，sortID='"+$("#sortID").val()+"'   sortName='"+$("#sortName").val()+"'");
-		if(!($("#comment"+$("#sortID").val()).hasClass('comments'))){ //没有
+		if($("#comment"+sortID).hasClass('comments')){ //没有
 			var comments = '';
 			comments += '<ul class="comments-list reply-list comments'+$("#sortID").val()+'" >';
 			comments += 	item;
 			comments += '</ul>';
 			$("#comment"+$("#sortID").val()).append(comments);
 		}else{
-			$("#comment"+$("#sortID").val()).prepend(item);
+			$(".comments"+$("#sortID").val()).prepend(item);
 		}
 	}
 	//评论完成，回复栏复原
