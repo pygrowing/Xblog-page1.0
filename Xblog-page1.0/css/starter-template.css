@@ -99,24 +99,29 @@ html,
 		visibility: visible;
 	}*/
 	.post .comm-info{
-		width: 68%;
+		width: 70%;
 		/*margin:0 auto;*/
-		margin-left: 16%;
-		
+		margin-left: 15%;
+		border-radius: 0.555rem;
 	}
 	.post{
 		/*margin: 50px auto;*/
 	}
 	.img-vfx{
-		border-top: 12px solid white;
+		/*border-top: 12px solid white;
 		border-left: 12px solid white;
-		border-right: 12px solid white;
+		border-right: 12px solid white;*/
 		width: 70%;
 		margin: 50px auto;
 		overflow: hidden;
+		-webkit-box-shadow: rgba(0,0,0,0.5) 0 0.625rem 1.125rem;
+    	-moz-box-shadow: rgba(0,0,0,0.5) 0 0.625rem 1.125rem;
+    	box-shadow: rgba(0,0,0,0.5) 0 0.625rem 1.125rem;
+    	border-radius: 0.555rem;
 	}
 	.img-vfx img{
 		transition: all 0.6s;
+    	border-radius: 0.555rem;
 	}
 	
 	.img-vfx img:hover{
